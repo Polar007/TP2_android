@@ -26,9 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void OnEqualPress(View v){
         if (sign.length() != 0){
-            int n1 = Integer.parseInt(number1);
-            int n2 = Integer.parseInt(number2);
-            int res = 0;
+            float n1 = Float.parseFloat(number1);
+            float n2 = Float.parseFloat(number2);
+            float res = 0;
             if (sign.equals("+")){
                 res = n1+n2;
             }
@@ -48,19 +48,14 @@ public class MainActivity extends AppCompatActivity {
         RefreshNumber(findViewById(R.id.textView));
         eqPressed=true;
     }
-
+    
     public void OnNumberPress(View v){
         if (eqPressed){
             OnCPress(v);
         }
         eqPressed=false;
         Button b = (Button)v;
-        String char = b.getText().toString();
-        if (char.equals(".")){
-            number2+=",";
-        }else{
-            number2+=char;
-        }
+        number2 += b.getText().toString().replace(".",",");
         RefreshNumber(findViewById(R.id.textView));
     }
 
