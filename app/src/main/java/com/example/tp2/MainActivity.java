@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         }
         eqPressed=false;
         Button b = (Button)v;
-        number2 += b.getText().toString().replace(".",",");
+        number2 += b.getText().toString();
         RefreshNumber(findViewById(R.id.textView));
     }
 
