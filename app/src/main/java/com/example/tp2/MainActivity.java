@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     String number1 = "";
     String number2 = "";
     String sign="";
+    Boolean eqPressed=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +46,16 @@ public class MainActivity extends AppCompatActivity {
             sign = "";
         }
         RefreshNumber(findViewById(R.id.textView));
+        eqPressed=true;
     }
 
     public void OnNumberPress(View v){
+        if (eqPressed){
+            OnCPress(v);
+        }
+        eqPressed=false;
         Button b = (Button)v;
-        number2 += b.getText().toString();
+        number2 += b.getText().toString().replace(".",",");
         RefreshNumber(findViewById(R.id.textView));
     }
 
@@ -57,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         if (sign.length() == 0){
             OnEqualPress(v);
         }
+        eqPressed=false;
         Button b = (Button)v;
         sign = b.getText().toString();
         number1 = number2;
@@ -69,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         number1 = "";
         number2 = "";
         sign= "";
+        eqPressed=false;
         RefreshNumber(findViewById(R.id.textView));
     }
 }
